@@ -1,15 +1,13 @@
 package com.rh.entities;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "employe")
-@Data
+@Data @NoArgsConstructor @AllArgsConstructor @ToString
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,4 +46,17 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "fk_departement")
     Departement dep;
+
+
+    @ManyToOne
+    @JoinColumn(name = "fk_emploiType")
+    EmploiType emploiType;
+
+    public Long getIdEmploye() {
+        return idEmploye;
+    }
+
+    public void setIdEmploye(Long idEmploye) {
+        this.idEmploye = idEmploye;
+    }
 }
