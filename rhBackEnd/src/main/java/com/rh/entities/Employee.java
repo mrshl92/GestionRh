@@ -52,6 +52,10 @@ public class Employee {
     @JoinColumn(name = "fk_emploiType")
     EmploiType emploiType;
 
+    @ManyToOne
+    @JoinColumn(name = "fk_division")
+    Division division;
+
     public Long getIdEmploye() {
         return idEmploye;
     }
