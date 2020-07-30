@@ -1,9 +1,11 @@
 package com.rh.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "employe")
@@ -55,6 +57,14 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "fk_division")
     Division division;
+
+    @OneToMany(mappedBy = "employee")
+    @JsonIgnore
+    private List<Conge> CongePerEmployee;
+
+    @OneToMany(mappedBy = "empResp")
+    @JsonIgnore
+    private List<ResponseConge> Responses;
 
     public Long getIdEmploye() {
         return idEmploye;
