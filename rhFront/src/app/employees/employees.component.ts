@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Employee} from './employee';
-import {EmployeeService} from './employee.service';
+import {Employee} from './Entities/employee';
+import {EmployeeService} from './Services/employee.service';
 
 @Component({
   selector: 'app-employees',
@@ -10,9 +10,8 @@ import {EmployeeService} from './employee.service';
 })
 export class EmployeesComponent implements OnInit {
   private EmployeesUrl = 'http://localhost:8080/rh/employes';
-  private DepartementUrl = 'http://localhost:8080/rh/employes/3/dep';
-  public employees: Employee[] =  [];
-  public departementName: string;
+  public employees: Employee[];
+  public departementName: string[];
   constructor(private httpClient: HttpClient, private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
@@ -21,16 +20,33 @@ export class EmployeesComponent implements OnInit {
   // tslint:disable-next-line:typedef
   OngetEmployees()
   {
-      this.employeeService.getEmployees(this.EmployeesUrl).subscribe(
-        response => {
-          this.employees = response._embedded.Employee;
+      this.employeeService.getEmployees().subscribe(
+        response1 => {
+          this.employees = response1._embedded.Employee;
+          console.log(this.employees);
+          for(let emp of this.employees)
+          {
+            this.employeeService.getDepEmployee(emp.idEmploye).subscribe(
+              // tslint:disable-next-line:no-shadowed-variable
+              response2 => {
+                console.log(response2);
+                emp.dep = response2.nomDepartement;
+                console.log(emp.dep);
+              }
+            );
+            this.employeeService.getDivEmployee(emp.idEmploye).subscribe(
+              // tslint:disable-next-line:no-shadowed-variable
+              response3 => {
+                emp.division = response3.nomDivision;
+                console.log(emp.division);
+              }
+            );
+
+          }
           }
       );
-      this.employeeService.getEmployees(this.DepartementUrl).subscribe(
-      response => {
-        this.departementName = response.nomDepartement;
-      }
-    );
   }
+
+
 
 }
