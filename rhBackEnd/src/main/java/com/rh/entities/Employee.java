@@ -2,6 +2,7 @@ package com.rh.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -19,6 +20,7 @@ public class Employee {
 
     private String prenom;
 
+    @CreationTimestamp
     private Date dateAjout;
 
     private Date datePriseService;

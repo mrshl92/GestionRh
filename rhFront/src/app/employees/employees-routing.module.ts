@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {EmployeesComponent} from './employees.component';
 import {EmployeeDetailsComponent} from './employee-details/employee-details.component';
 import {NewEmployeeComponent} from './new-employee/new-employee.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   { path: 'employees', component: EmployeesComponent},
@@ -11,7 +12,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes),
+    ReactiveFormsModule],
   exports: [RouterModule]
 })
 export class EmployeesRoutingModule { }

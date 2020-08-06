@@ -1,1 +1,102 @@
-<p>new-employee works!</p>
+
+  <body class="container bg-gray-100">
+
+<div class="container-fluid">
+
+      <!-- Nested Row within Card Body -->
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="p-5">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">AJOUTER UN NOUVEAU EMPLOYE!</h1>
+            </div>
+            <form class="user" [formGroup]="EmployeeForm" (ngSubmit)="onSaveEmployee()">
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="text" class="form-control" id="matricule" placeholder="Matricule" formControlName="matricule">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="nom" placeholder="Nom" formControlName="nom">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="prenom" placeholder="Prenom" formControlName="prenom">
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="text" class="form-control" id="numTeleph" placeholder="Numero de Telephone" formControlName="numTeleph">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <select class="form-control" id="sexe" formControlName="sexe" >
+                    <option value="Masculin" >Masculin</option>
+                    <option value="Feminin" selected>Feminin</option>
+                  </select>
+                </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="text" class="form-control" id="ville" placeholder="Ville" formControlName="ville">
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email">
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" formControlName="password">
+                </div>
+                <div class="col-sm-6">
+                  <input type="password" class="form-control" id="exampleRepeatPassword" placeholder="Repeat Password">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="text" class="form-control" id="typeContrat" placeholder="Type de Contrat" formControlName="typeContrat">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="etatCivil" placeholder="Etat Civil " formControlName="etatCivil">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="text" class="form-control" id="soldeConge" placeholder="Solde Congé" formControlName="soldeConge">
+                </div>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" id="dateAjout" placeholder="Date Ajout" formControlName="dateAjout">
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <input type="date" class="form-control" id="datePriseService" placeholder="Date Prise de Service" formControlName="datePriseService">
+                </div>
+                <div class="col-sm-6">
+                  <input type="date" class="form-control" id="dateReboursement" placeholder="Date de Remboursement" formControlName="dateReboursement">
+                </div>
+              </div>
+              <button type="submit" class="form-control btn btn-primary">Ajouter </button>
+            </form>
+            <hr>
+            <div class="text-center">
+              <a class="small" href="forgot-password.html">Forgot Password?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="js/sb-admin-2.min.js"></script>
+
+</body>
+
+

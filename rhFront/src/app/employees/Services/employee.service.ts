@@ -31,6 +31,9 @@ export class EmployeeService {
   getDivEmployee(idEmploye: number): Observable<any> {
     return this.httpClient.get<any>(`http://localhost:8080/rh/employes/${idEmploye}/division`);
   }
+  addNewEmployee(employee: Employee): Observable<any>{
+    return this.httpClient.post('http://localhost:8080/rh/employes', employee);
+  }
 
 
 
