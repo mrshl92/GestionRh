@@ -16,7 +16,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Liste Des Employés</h6>
                 </th>
                 <th>
-              <button class="btn btn-success btn-sm" style="margin-left: 540px"><i class="fa fa-plus-square" aria-hidden="true"></i> Ajouter Un Employé</button>
+              <button class="btn btn-success btn-sm" style="margin-left: 540px" routerLink="/employees/new"><i class="fa fa-plus-square" aria-hidden="true"></i> Ajouter Un Employé</button>
                 </th>
               </tr>
             </table>
@@ -56,7 +56,7 @@
                   <td class="text-center">{{emp.dep}}</td>
                   <td class="text-center">{{emp.division}}</td>
                   <td class="text-center">
-                    <button class="btn btn-success btn-circle"><i class="fa fa-list" aria-hidden="true" ></i><span class="btn-icon-split"></span> </button>
+                    <button class="btn btn-success btn-circle" routerLink="/employees/details/{{emp.idEmploye}}"><i class="fa fa-list" aria-hidden="true" ></i><span class="btn-icon-split"></span> </button>
                   </td>
                 </tr>
                 </tbody>

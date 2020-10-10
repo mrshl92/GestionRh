@@ -1,6 +1,7 @@
 package com.rh.services;
 
 import com.rh.dao.EmployeeRepository;
+import com.rh.entities.Departement;
 import com.rh.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class EmployeDaoService {
     // Create An employee
     public Employee CreateEmployee(Employee employee)
     {
-       return employeeRepository.save(employee);
+        return employeeRepository.save(employee);
     }
     //Delete An Employee
     public void DeleteEmployee(Long id)

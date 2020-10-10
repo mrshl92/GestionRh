@@ -10,26 +10,42 @@
             <div class="text-center">
               <h1 class="h4 text-gray-900 mb-4">AJOUTER UN NOUVEAU EMPLOYE!</h1>
             </div>
+            <div>
+              <div class="alert alert-success" role="alert" *ngIf="isValid">
+                L'employé est ajouté avec succés  !
+              </div>
+            </div>
             <form class="user" [formGroup]="EmployeeForm" (ngSubmit)="onSaveEmployee()">
-              <div class="form-group row">
+              <div class="form-group row" >
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control" id="matricule" placeholder="Matricule" formControlName="matricule">
+                  <input type="text" class="form-control" id="matricule" placeholder="Matricule(*)" formControlName="matricule"
+                         [ngClass]="{'is-invalid':EmployeeForm.get('matricule').touched && EmployeeForm.get('matricule').invalid}">
+                  <div class="invalid-feedback"><div>VOUS DEVEZ SAISIR UN matricule VALIDE </div></div>
                 </div>
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" id="nom" placeholder="Nom" formControlName="nom">
+                  <input type="text" class="form-control" id="nom" placeholder="Nom(*)" formControlName="nom"
+                         [ngClass]="{'is-invalid':EmployeeForm.get('nom').touched && EmployeeForm.get('nom').invalid}">
+                  <div class="invalid-feedback"><div>VOUS DEVEZ SAISIR UN NOM VALIDE </div></div>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-6">
-                  <input type="text" class="form-control" id="prenom" placeholder="Prenom" formControlName="prenom">
+                  <input type="text" class="form-control" id="prenom" placeholder="Prenom(*)" formControlName="prenom"
+                         [ngClass]="{'is-invalid':EmployeeForm.get('prenom').touched && EmployeeForm.get('prenom').invalid}">
+                  <div class="invalid-feedback"><div>VOUS DEVEZ SAISIR UN PRENOM VALIDE </div></div>
                 </div>
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control" id="numTeleph" placeholder="Numero de Telephone" formControlName="numTeleph">
+                  <input type="text" class="form-control" id="numTeleph" placeholder="Numero de Telephone(*)" formControlName="numTeleph"
+                         [ngClass]="{'is-invalid':EmployeeForm.get('numTeleph').touched && EmployeeForm.get('numTeleph').invalid}">
+                  <div class="invalid-feedback" *ngIf="EmployeeForm.get('numTeleph').touched && EmployeeForm.get('numTeleph').invalid">
+                    <div *ngIf="EmployeeForm.get('numTeleph').errors.required">TELEPH EST OBLIGATOIRE ! </div>
+                    <div *ngIf="EmployeeForm.get('numTeleph').errors.invalid ">VOUS DEVEZ SAISIR UN NUMERO VALIDE</div>
+                  </div>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <select class="form-control" id="sexe" formControlName="sexe" >
+                  <select class="form-control" id="sexe" formControlName="sexe">
                     <option value="Masculin" >Masculin</option>
                     <option value="Feminin" selected>Feminin</option>
                   </select>
@@ -39,19 +55,54 @@
                 </div>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email">
+                <input type="email" class="form-control" id="email" placeholder="Email Address(*)" formControlName="email"
+                       [ngClass]="{'is-invalid':EmployeeForm.get('email').touched && EmployeeForm.get('email').invalid}">
+                <div class="invalid-feedback" *ngIf="EmployeeForm.get('email').touched && EmployeeForm.get('email').invalid">
+                <div *ngIf="EmployeeForm.get('email').errors.required">L'EMAIL EST OBLIGATOIRE ! </div>
+                <div *ngIf="EmployeeForm.get('email').errors.email ">VOUS DEVEZ SAISIR UN EMAIL VALIDE</div>
+                </div>
+
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="password" class="form-control" id="exampleInputPassword" placeholder="Password" formControlName="password">
                 </div>
                 <div class="col-sm-6">
-                  <input type="password" class="form-control" id="exampleRepeatPassword" placeholder="Repeat Password">
+                  <select class="form-control" id="dep" formControlName="dep" [(ngModel)]="Dept" >
+                    <option value="d1" >Administration, Comptabilité et Finance </option>
+                    <option value="d2">Télécommunications </option>
+                    <option value="d3">Ingénierie et Technique </option>
+                    <option value="d4">Management et Direction </option>
+                    <option value="d5">Ressources humaines </option>
+                    <option value="d6">Recherche et Développement</option>
+                    <option value="d7">Secrétariat et Support Administratif</option>
+                    <option value="d8">Achat </option>
+                    <option value="d9">Production </option>
+                  </select>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" class="form-control" id="typeContrat" placeholder="Type de Contrat" formControlName="typeContrat">
+                  <select class="form-control" id="division" formControlName="division" [(ngModel)]="div" >
+                    <option value="di1" >Service Division</option>
+                    <option value="di2" >IT</option>
+                    <option value="di3" >Management</option>
+
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <select class="form-control" id="nomEmploiType" formControlName="nomEmploiType" >
+                    <option value="frontend">frontend</option>
+                    <option value="backend" selected>backend</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <select class="form-control" id="typeContrat" formControlName="typeContrat" >
+                    <option value="CDD">CDD</option>
+                    <option value="CDI" selected>CDI</option>
+                  </select>
                 </div>
                 <div class="col-sm-6">
                   <input type="text" class="form-control" id="etatCivil" placeholder="Etat Civil " formControlName="etatCivil">
@@ -60,9 +111,6 @@
               <div class="form-group row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                   <input type="text" class="form-control" id="soldeConge" placeholder="Solde Congé" formControlName="soldeConge">
-                </div>
-                <div class="col-sm-6">
-                  <input type="text" class="form-control" id="dateAjout" placeholder="Date Ajout" formControlName="dateAjout">
                 </div>
               </div>
               <div class="form-group row">

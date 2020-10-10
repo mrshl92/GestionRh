@@ -14,7 +14,7 @@ public class EmploiTypeController {
 
 
     @PostMapping("emploi-type")
-    public EmploiType CreateDepartement(@RequestBody EmploiType emploiType)
+    public EmploiType CreateEmploiType(@RequestBody EmploiType emploiType)
     {
         return emploiTypeDaoService.CreateEmploiType(emploiType);
     }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,9 +22,9 @@ public class Division {
     private String nomDivision;
 
 
-    @OneToMany(mappedBy = "emploiType")
+    @OneToMany(mappedBy = "division",cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Employee> employeesByDivision;
+    private List<Employee> employeesByDivision = new ArrayList<>();
 
     public Long getIdDivision() {
         return idDivision;

@@ -24,7 +24,7 @@ public class ResponseConge {
 
     private int Reponse ;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "responseConge")
     @JsonIgnore
     private List<Conge> ResponseToConges;
 

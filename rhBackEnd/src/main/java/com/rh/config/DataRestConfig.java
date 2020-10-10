@@ -16,14 +16,14 @@ import java.util.Set;
 public class DataRestConfig implements RepositoryRestConfigurer {
      @Autowired
     private EntityManager entityManager;
-
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
 
+        // call an internal helper Method
         exposeIds(config);
     }
-    private void exposeIds(RepositoryRestConfiguration config) {
 
+    private void exposeIds(RepositoryRestConfiguration config) {
         // expose entity ids;
         //
 

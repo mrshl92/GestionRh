@@ -23,7 +23,7 @@ public class EmploiType {
 
     private String nomEmploiType;
 
-    @OneToMany(mappedBy = "emploiType")
+    @OneToMany(mappedBy = "emploiType",cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Employee> employeesByType;
 
