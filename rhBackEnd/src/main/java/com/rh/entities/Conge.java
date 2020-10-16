@@ -1,6 +1,7 @@
 package com.rh.entities;
 
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,7 +22,7 @@ public class Conge {
 
     private int nbJoursTotal;
 
-    private int status;
+    private int status ;
 
     private String raison;
 
@@ -30,7 +31,7 @@ public class Conge {
     private Date dateDebut;
 
     private Date dateFin;
-
+    @CreationTimestamp
     private Date dateDemande;
 
     public Long getIdConge() {
